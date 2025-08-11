@@ -11,6 +11,7 @@ export const questions2: Question[] = [
   },
 
   {
+    
     id: 2,
     question: "Which of the following statements is true about Global Variables?",
     options: [
