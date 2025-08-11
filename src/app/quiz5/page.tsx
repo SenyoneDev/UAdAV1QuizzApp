@@ -1,32 +1,18 @@
 'use client';
 import React, { useState } from 'react';
 import { ChevronRight, ChevronLeft, RotateCcw, Trophy, CheckCircle, XCircle } from 'lucide-react';
-import { generateRandomQuiz } from '@/data/randomQuizGenerator';
-import { questions1 } from '@/data/questions';
-import { questions2 } from '@/data/questions2';
-import { questions3 } from '@/data/questions3';
-import { questions4 } from '@/data/questions4';
 import { questions5 } from '@/data/questions5';
-import { useRouter, } from 'next/navigation';
+import { useRouter } from 'next/router';
 
-const UiPathQuiz = () => {
+const UiPathQuiz3 = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
 
-  const allQuestions = [
-    ...questions1,
-    ...questions2,
-    ...questions3,
-    ...questions4,
-    ...questions5
-
-  ];
+  const allQuestions = questions5
 
   const questions = allQuestions;
-
-  const router = useRouter();
 
   const handleAnswerSelect = (questionId: number, answerIndex: number) => {
     setSelectedAnswers(prev => ({
@@ -34,21 +20,7 @@ const UiPathQuiz = () => {
       [questionId]: answerIndex
     }));
   };
-  const handleClickButton1 = () => {
-    router.push('/quiz1');
-  };
-  const handleClickButton2 = () => {
-    router.push('/quiz2');
-  };
-  const handleClickButton3= () => {
-    router.push('/quiz3');
-  };
-  const handleClickButton4= () => {
-    router.push('/quiz4');
-  };
-  const handleClickButton5= () => {
-    router.push('/quiz5');
-  };
+
   const calculateScore = () => {
     let correct = 0;
     questions.forEach(question => {
@@ -110,38 +82,12 @@ const UiPathQuiz = () => {
           </div>
 
           <button
-            /*onClick={() => setQuizStarted(true)}*/
-            onClick={handleClickButton1}
+            onClick={() => setQuizStarted(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 shadow-md hover:shadow-lg"
           >
-            Commencer le Quiz 1
+            Commencer le Quiz 
           </button>
-          <br />
-          <button
-             onClick={handleClickButton2}
-            className="m-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 shadow-md hover:shadow-lg"
-          >
-            Commencer le Quiz 2
-          </button>
-          <button
-            onClick={handleClickButton3}
-            className="m-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 shadow-md hover:shadow-lg"
-          >
-            Commencer le Quiz 3
-          </button>
-          <br />
-          <button
-             onClick={handleClickButton4}
-            className="m-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 shadow-md hover:shadow-lg"
-          >
-            Commencer le Quiz 4
-          </button>
-          <button
-            onClick={handleClickButton5}
-            className="m-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 shadow-md hover:shadow-lg"
-          >
-            Commencer le Quiz 5
-          </button>
+
         </div>
       </div>
     );
@@ -335,4 +281,4 @@ const UiPathQuiz = () => {
   );
 };
 
-export default UiPathQuiz;
+export default UiPathQuiz3;
